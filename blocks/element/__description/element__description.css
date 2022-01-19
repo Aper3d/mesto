@@ -1,0 +1,10 @@
+.element__description {
+  max-width: 190px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
