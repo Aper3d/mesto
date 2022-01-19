@@ -1,6 +1,11 @@
 .popup__container {
-    width: 100%;
-    max-width: 430px;
-    position: relative;
-    z-index: 1;
+  width: 100%;
+  max-width: 430px;
+  position: relative;
+  z-index: 1;
+}
+@media screen and (max-width: 728px) {
+  .popup__container {
+    width: 88%;
+  }
 }
