@@ -2,8 +2,9 @@ const popup = document.querySelector('.popup')
 const profileEditButton = document.querySelector('.profile__edit-button')
 const popupCloseButton = document.querySelector('.popup__close-button')
 const profileSubmitButton = document.querySelector('.popup__submit-button')
-let userNameInput = document.querySelector('.input__name_type_text')
-let userDescriptionInput = document.querySelector('.input__description_type_text')
+const form = document.querySelector('.popup__forms')
+let userNameInput = document.querySelector('.popup__name_type_text')
+let userDescriptionInput = document.querySelector('.popup__description_type_text')
 let userName = document.querySelector('.profile__name')
 let userDescription = document.querySelector('.profile__description')
 
@@ -25,4 +26,4 @@ function popupClose() {
 
 profileEditButton.addEventListener('click', profileEdit)
 popupCloseButton.addEventListener('click', popupClose)
-profileSubmitButton.addEventListener('click', profileSubmit)
+form.addEventListener('submit', profileSubmit)
