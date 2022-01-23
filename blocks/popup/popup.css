@@ -4,11 +4,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: .3s;
 }
 .popup::before {
   content: "";
@@ -17,4 +16,6 @@
   background-color: #000000;
   opacity: 0.5;
   position: fixed;
+  top: 0;
+  left: 0;
 }
