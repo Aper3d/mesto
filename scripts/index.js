@@ -7,24 +7,24 @@ let userDescriptionInput = document.querySelector('.popup__input_type_descriptio
 let userName = document.querySelector('.profile__name')
 let userDescription = document.querySelector('.profile__description')
 
-function popupClose() {
+function closePopup() {
     popup.classList.remove('popup_open')
 }
 
-function profileEdit(event) {
+function editProfile(event) {
     event.preventDefault()
     popup.classList.add('popup_open')
     userNameInput.value = userName.textContent
     userDescriptionInput.value = userDescription.textContent
 }
 
-function profileSubmit(event) {
+function submitProfile(event) {
     event.preventDefault()
     userName.textContent = userNameInput.value
     userDescription.textContent = userDescriptionInput.value
-    popupClose()
+    closePopup()
 }
 
-profileEditButton.addEventListener('click', profileEdit)
-popupCloseButton.addEventListener('click', popupClose)
-form.addEventListener('submit', profileSubmit)
+profileEditButton.addEventListener('click', editProfile)
+popupCloseButton.addEventListener('click', closePopup)
+form.addEventListener('submit', submitProfile)

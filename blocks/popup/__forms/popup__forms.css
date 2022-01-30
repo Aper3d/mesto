@@ -2,8 +2,3 @@
   display: flex;
   flex-direction: column;
 }
-@media screen and (max-width: 728px) {
-  .popup__forms {
-    padding: 25px 22px;
-  }
-}
