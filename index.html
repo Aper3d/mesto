@@ -13,76 +13,81 @@
         <header class="header">
             <img src="images/logo/logo.svg" alt="Логотип проекта" class="header__logo">
         </header>
-        <section class="profile">
-            <img src="images/profile/kusto-1280x799.jpg" alt="Аватарка" class="profile__avatar">
-            <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__edit-button hover" type="button"></button>
-                <p class="profile__description">Исследователь океана</p>
-            </div>
-            <button class="profile__add-button hover" type="button"></button>
-        </section>
-        <section class="elements">
-            <ul class="elements__grid">
-                <li class="element">
-                    <img src="images/elements/forest-road.jpg" alt="Дорога в лесу" class="element__photo">
-                    <div class="element__container">
-                        <h2 class="element__description">Путешествуя по окрестностям</h2>
-                        <button class="element__like-button element__like-button_active hover" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="images/elements/forest-sunset.jpg" alt="Закат в дороге" class="element__photo">
-                    <div class="element__container">
-                        <h2 class="element__description">Встреча заката в лесу</h2>
-                        <button class="element__like-button hover" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="images/elements/forest-sunset-2.jpg" alt="Закат" class="element__photo">
-                    <div class="element__container">
-                        <h2 class="element__description">Еще немного зактов</h2>
-                        <button class="element__like-button hover" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="images/elements/nigth-road.jpg" alt="Ночная дорога" class="element__photo">
-                    <div class="element__container">
-                        <h2 class="element__description">Прокатился по городу</h2>
-                        <button class="element__like-button hover" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="images/elements/winter-1.jpg" alt="Зима" class="element__photo">
-                    <div class="element__container">
-                        <h2 class="element__description">Зима бывает такой</h2>
-                        <button class="element__like-button hover" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img src="images/elements/winter-2.jpg" alt="Зима" class="element__photo">
-                    <div class="element__container">
-                        <h2 class="element__description">Или такой</h2>
-                        <button class="element__like-button hover" type="button"></button>
-                    </div>
-                </li>
-            </ul>
-        </section>
+        <main>
+            <section class="profile">
+                <img src="images/profile/kusto-1280x799.jpg" alt="Аватарка" class="profile__avatar">
+                <div class="profile__info">
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button hover" type="button"
+                        aria-label="Редактировать профиль"></button>
+                    <p class="profile__description">Исследователь океана</p>
+                </div>
+                <button class="profile__add-button hover" type="button" aria-label="Добавить карточку"></button>
+            </section>
+            <section class="elements">
+                <ul class="elements__grid">
+                    <li class="element">
+                        <img src="images/elements/forest-road.jpg" alt="Дорога в лесу" class="element__photo">
+                        <div class="element__container">
+                            <h2 class="element__description">Путешествуя по окрестностям</h2>
+                            <button class="element__like-button" type="button" aria-label="Лайк"></button>
+                        </div>
+                    </li>
+                    <li class="element">
+                        <img src="images/elements/forest-sunset.jpg" alt="Закат в дороге" class="element__photo">
+                        <div class="element__container">
+                            <h2 class="element__description">Встреча заката в лесу</h2>
+                            <button class="element__like-button" type="button" aria-label="Лайк"></button>
+                        </div>
+                    </li>
+                    <li class="element">
+                        <img src="images/elements/forest-sunset-2.jpg" alt="Закат" class="element__photo">
+                        <div class="element__container">
+                            <h2 class="element__description">Еще немного зактов</h2>
+                            <button class="element__like-button" type="button" aria-label="Лайк"></button>
+                        </div>
+                    </li>
+                    <li class="element">
+                        <img src="images/elements/nigth-road.jpg" alt="Ночная дорога" class="element__photo">
+                        <div class="element__container">
+                            <h2 class="element__description">Прокатился по городу</h2>
+                            <button class="element__like-button" type="button" aria-label="Лайк"></button>
+                        </div>
+                    </li>
+                    <li class="element">
+                        <img src="images/elements/winter-1.jpg" alt="Зима" class="element__photo">
+                        <div class="element__container">
+                            <h2 class="element__description">Зима бывает такой</h2>
+                            <button class="element__like-button" type="button" aria-label="Лайк"></button>
+                        </div>
+                    </li>
+                    <li class="element">
+                        <img src="images/elements/winter-2.jpg" alt="Зима" class="element__photo">
+                        <div class="element__container">
+                            <h2 class="element__description">Или такой</h2>
+                            <button class="element__like-button" type="button" aria-label="Лайк"></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
         <footer class="footer">
             <p class="footer__copyrigth">&copy; 2021 Mesto Russia</p>
         </footer>
         <div class="popup">
             <div class="popup__container">
-                <button class="popup__close-button hover" type="button"></button>
-                <form class="popup__forms">
-                    <h2 class="popup__title">Редактировать профиль</h2>
-                    <input type="text" class="popup__input popup__input_type_name" placeholder="Имя пользователя">
-                    <input type="text" class="popup__input popup__input_type_description" placeholder="Описание пользователя">
-                    <button class="popup__submit-button hover" type="submit">Сохранить</button>
+                <button class="popup__close-button hover" type="button" aria-label="Закрыть"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__forms" name="profile-form">
+                    <input type="text" class="popup__input popup__input_type_name" name="user-name" placeholder="Имя пользователя">
+                    <input type="text" class="popup__input popup__input_type_description" name="user-description"
+                        placeholder="Описание пользователя">
+                    <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="pages/index.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
+
 </html>

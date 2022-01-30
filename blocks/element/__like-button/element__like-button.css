@@ -6,4 +6,10 @@
   background-repeat: no-repeat;
   background-color: transparent;
   border: none;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.element__like-button:hover {
+  opacity: .5;
 }

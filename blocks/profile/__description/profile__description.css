@@ -3,10 +3,14 @@
   padding: 0;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 @media screen and (max-width: 728px) {
   .profile__description {
     font-size: 14px;
+    line-height: 17px;
   }
 }
