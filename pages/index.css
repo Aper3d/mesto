@@ -20,6 +20,7 @@
 @import url("../blocks/elements/__grid/elements__grid.css");
 
 @import url("../blocks/element/element.css");
+@import url("../blocks/element/__delete-button/__delete-button.css");
 @import url("../blocks/element/__photo/element__photo.css");
 @import url("../blocks/element/__container/element__container.css");
 @import url("../blocks/element/__description/element__description.css");
@@ -37,3 +38,6 @@
 @import url("../blocks/popup/__title/popup__title.css");
 @import url("../blocks/popup/__close-button/popup__close-button.css");
 @import url("../blocks/popup/__submit-button/popup__submit-button.css");
+@import url("../blocks/popup/__figure/popup__figure.css");
+@import url("../blocks/popup/__image/popup__image.css");
+@import url("../blocks/popup/__caption/popup__caption.css");
