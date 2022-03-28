@@ -1,12 +1,16 @@
 .popup__input {
+  outline: none;
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
   padding: 0 0 13px;
-  margin: 0 0 30px;
+  margin: 15px 0 0;
   border: none;
   border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
 }
-.popup__input:last-of-type {
+.popup__input:first-of-type {
   margin: 0;
+}
+.popup__input:invalid {
+  border-bottom: 1px solid #FF0000;
 }

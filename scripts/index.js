@@ -32,7 +32,7 @@ const popupFullView = document.querySelector('#view');
 const imgAddBtn = document.querySelector('.profile__add-button');
 const profileEditBtn = document.querySelector('.profile__edit-button');
 
-const addImgCloseBtn = popupAddImg.querySelector('#add-close');
+const imgAddCloseBtn = popupAddImg.querySelector('#add-close');
 const profileEditCloseBtn = popupEditProfile.querySelector('#edit-close');
 const fullViewCloseBtn = popupFullView.querySelector('#view-close');
 
@@ -42,18 +42,18 @@ const imgAddSubmit = popupAddImg.querySelector('#add-form');
 const elements = document.querySelector('.elements__grid');
 const templateCard = document.querySelector('#element').content;
 
-const placeName = popupAddImg.querySelector('.popup__input_type_place');
-const placeLink = popupAddImg.querySelector('.popup__input_type_link');
+const placeName = popupAddImg.querySelector('#place-name');
+const placeLink = popupAddImg.querySelector('#place-link');
 
-const userNameInput = popupEditProfile.querySelector('.popup__input_type_name');
-const userDescriptionInput = popupEditProfile.querySelector('.popup__input_type_description');
+const userNameInput = popupEditProfile.querySelector('#user-name');
+const userDescriptionInput = popupEditProfile.querySelector('#user-description');
 
 const userName = document.querySelector('.profile__name');
 const userDescription = document.querySelector('.profile__description');
 const popupImg = popupFullView.querySelector('.popup__image');
 const popupCaption = popupFullView.querySelector('.popup__caption');
 
-function createCard({link, name}) {
+function createCard({ link, name }) {
     const newCard = templateCard.cloneNode(true);
     newCard.querySelector('.element__photo').src = link;
     newCard.querySelector('.element__photo').alt = name;
@@ -68,23 +68,34 @@ function renderCards() {
     cards.forEach(renderCard);
 }
 function renderCard(cards) {
-    const newCard = createCard({link:cards.link, name:cards.name});
+    const newCard = createCard({ link: cards.link, name: cards.name });
     elements.prepend(newCard);
 }
 
 function addNewCard(event) {
     event.preventDefault();
-    const newCard = createCard({link:placeLink.value, name:placeName.value});
+    const newCard = createCard({ link: placeLink.value, name: placeName.value });
     elements.prepend(newCard);
     closePopup(popupAddImg);
+    imgAddSubmit.reset();
 }
 
 function openPopup(popup) {
     popup.classList.add('popup_open');
+    popup.addEventListener('click', clickClosePopup);
+    popup.addEventListener('keydown', keydownClosePopup);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_open');
+    popup.querySelector('.popup__forms').reset();
+    const spanError = Array.from(popup.querySelectorAll('.popup__error'));
+    spanError.forEach((span) => {
+        span.classList.remove('popup__error_visible');
+        span.textContent = " ";
+    });
+    popup.querySelector('.popup__submit-button').setAttribute("disabled", "disabled");
+    popup.querySelector('.popup__submit-button').classList.add('popup__submit-button_inactiv');
 }
 
 function editProfile(event) {
@@ -97,7 +108,6 @@ function editProfile(event) {
 function addCard(event) {
     event.preventDefault();
     openPopup(popupAddImg);
-    imgAddSubmit.reset();
 }
 
 function submitProfile(event) {
@@ -122,10 +132,23 @@ function likeImg(event) {
     event.target.closest('.element__like-button').classList.toggle('element__like-button_active');
 }
 
+function clickClosePopup(event) {
+    if (event.target.closest('.popup__overlay')) {
+        event.target.closest('.popup').classList.remove('popup_open');
+    };
+}
+
+function keydownClosePopup(event) {
+    if (event.key === 'Escape') {
+        console.log(event.key);
+        event.target.closest('.popup').classList.remove('popup_open');
+    }
+}
+
 profileEditBtn.addEventListener('click', editProfile);
 imgAddBtn.addEventListener('click', addCard);
 
-addImgCloseBtn.addEventListener('click', () => closePopup(popupAddImg));
+imgAddCloseBtn.addEventListener('click', () => closePopup(popupAddImg));
 profileEditCloseBtn.addEventListener('click', () => closePopup(popupEditProfile));
 fullViewCloseBtn.addEventListener('click', () => closePopup(popupFullView));
 
