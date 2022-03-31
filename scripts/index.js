@@ -84,7 +84,7 @@ function openPopup(popup) {
 function closePopup(popup) {
     popup.classList.remove('popup_open');
     popup.removeEventListener('mousedown', mousedownClosePopup);
-    popup.removeEventListener('keydown', keydownClosePopup);
+    document.removeEventListener('keydown', keydownClosePopup);
 }
 
 function resetError(popup) {
