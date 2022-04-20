@@ -7,4 +7,5 @@
 }
 .popup__submit-button_inactiv:hover {
   opacity: .2;
+  cursor: default;
 }

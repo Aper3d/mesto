@@ -13,12 +13,14 @@ export default class FormValidator {
     }
 
     _showInputError(inputElement) {
+        inputElement.classList.add('popup__input_invalid')
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
         errorElement.textContent = inputElement.validationMessage
         errorElement.classList.add(this._errorClass)
     };
 
     _hideInputError(inputElement) {
+        inputElement.classList.remove('popup__input_invalid')
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
         errorElement.textContent = " "
         errorElement.classList.remove(this._errorClass)
@@ -60,5 +62,14 @@ export default class FormValidator {
 
     enableValidation() {
         this._setEventListeners()
+    }
+    resetError() {
+        this._formElement.reset()
+        const error = Array.from(this._formElement.querySelectorAll(this._inputSelector))
+        error.forEach((inputElement) => {
+            this._hideInputError(inputElement)
+        });
+        this._formElement.querySelector(this._submitButtonSelector).setAttribute("disabled", "disabled")
+        this._formElement.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass)
     }
 }

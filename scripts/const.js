@@ -9,7 +9,7 @@ const profileEditSubmit = popupEditProfile.querySelector('#edit-form') //фор�
 const imgAddSubmit = popupAddImg.querySelector('#add-form') //форма добавления карточки
 
 const elements = document.querySelector('.elements__grid') //контейнер с карточками
-const templateCard = document.querySelector('#element').content //темплейт карточек
+const templateCard = '#element' //селектор темплейта карточек
 
 const placeName = popupAddImg.querySelector('#place-name') //инпут названия карточки
 const placeLink = popupAddImg.querySelector('#place-link') //инпут ссылки карточки

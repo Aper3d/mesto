@@ -7,7 +7,7 @@ export default class Card {
     }
 
     _getTemplate() {
-        const cardElement = this._templateCard.cloneNode(true)
+        const cardElement = document.querySelector(this._templateCard).content.cloneNode(true)
         return cardElement;
     }
 
@@ -17,10 +17,14 @@ export default class Card {
         this._image.src = this._link
         this._image.alt = this._name
         this._card.querySelector('.element__description').textContent = this._name
+        this._setEventListeners()
+        return this._card
+    }
+
+    _setEventListeners() {
         this._card.querySelector('.element__delete-button').addEventListener('click', this._deleteCard)
         this._image.addEventListener('click', this._openView)
         this._card.querySelector('.element__like-button').addEventListener('click', this._likeImg)
-        return this._card
     }
 
     _deleteCard(event) {

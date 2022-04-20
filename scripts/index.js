@@ -1,26 +1,26 @@
-import FormValidator from './validate.js'
-import Card from './card.js'
+import FormValidator from './Validate.js'
+import Card from './Card.js'
 
 import {
-popupAddImg,
-popupEditProfile,
-popupFullView,
-imgAddBtn,
-profileEditBtn,
-profileEditSubmit,
-imgAddSubmit,
-elements,
-templateCard,
-placeName,
-placeLink,
-userNameInput,
-userDescriptionInput,
-userName,
-userDescription,
-popupImg,
-popupCaption,
-config,
-cards
+    popupAddImg,
+    popupEditProfile,
+    popupFullView,
+    imgAddBtn,
+    profileEditBtn,
+    profileEditSubmit,
+    imgAddSubmit,
+    elements,
+    templateCard,
+    placeName,
+    placeLink,
+    userNameInput,
+    userDescriptionInput,
+    userName,
+    userDescription,
+    popupImg,
+    popupCaption,
+    config,
+    cards
 } from './const.js'
 
 const popupEditValidator = new FormValidator(config, profileEditSubmit)
@@ -29,19 +29,15 @@ popupEditValidator.enableValidation()
 const popupAddValidator = new FormValidator(config, imgAddSubmit)
 popupAddValidator.enableValidation()
 
-function renderCards() {
-    cards.forEach((item) => {
-        const newCard = new Card({ link: item.link, name: item.name }, templateCard, openView)
-        const cardElement = newCard.createCard()
-        elements.prepend(cardElement)
-    })
+function renderNewCard(data) {
+    const newCard = new Card({ link: data.link, name: data.name }, templateCard, openView)
+    const cardElement = newCard.createCard()
+    elements.prepend(cardElement)
 }
 
 function addNewCard(event) {
     event.preventDefault();
-    const newCard = new Card({ link: placeLink.value, name: placeName.value }, templateCard, openView)
-    const cardElement = newCard.createCard()
-    elements.prepend(cardElement)
+    renderNewCard({ link: placeLink.value, name: placeName.value })
     closePopup(popupAddImg)
 }
 
@@ -57,20 +53,11 @@ function closePopup(popup) {
     document.removeEventListener('keydown', keydownClosePopup)
 }
 
-function resetError(popup) {
-    popup.querySelector(config.formSelector).reset()
-    const spanError = Array.from(popup.querySelectorAll(config.inputErrorClass))
-    spanError.forEach((span) => {
-        span.classList.remove(config.errorClass)
-        span.textContent = " "
-    });
-    popup.querySelector(config.submitButtonSelector).setAttribute("disabled", "disabled")
-    popup.querySelector(config.submitButtonSelector).classList.add(config.inactiveButtonClass)
-}
+
 
 function editProfile(event) {
     event.preventDefault()
-    resetError(popupEditProfile)
+    popupEditValidator.resetError(popupEditProfile)
     userNameInput.value = userName.textContent
     userDescriptionInput.value = userDescription.textContent
     openPopup(popupEditProfile)
@@ -78,7 +65,7 @@ function editProfile(event) {
 
 function addCard(event) {
     event.preventDefault()
-    resetError(popupAddImg)
+    popupAddValidator.resetError(popupAddImg)
     openPopup(popupAddImg)
 }
 
@@ -100,10 +87,7 @@ function openView(event) {
 
 function mousedownClosePopup(evt) {
     const openedPopup = document.querySelector('.popup_open')
-    if (evt.target.classList.contains('popup__overlay')) {
-        closePopup(openedPopup)
-    }
-    if (evt.target.classList.contains('popup__close-button')) {
+    if (evt.target.classList.contains('popup__overlay') || evt.target.classList.contains('popup__close-button')) {
         closePopup(openedPopup)
     }
 }
@@ -121,4 +105,6 @@ imgAddBtn.addEventListener('click', addCard)
 profileEditSubmit.addEventListener('submit', submitProfile)
 imgAddSubmit.addEventListener('submit', addNewCard)
 
-renderCards()
+cards.forEach((item) => {
+    renderNewCard({ link: item.link, name: item.name })
+})
