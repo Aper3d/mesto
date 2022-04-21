@@ -69,7 +69,7 @@ export default class FormValidator {
         error.forEach((inputElement) => {
             this._hideInputError(inputElement)
         });
-        this._formElement.querySelector(this._submitButtonSelector).setAttribute("disabled", "disabled")
-        this._formElement.querySelector(this._submitButtonSelector).classList.add(this._inactiveButtonClass)
+        this._submitButton.setAttribute("disabled", "disabled")
+        this._submitButton.classList.add(this._inactiveButtonClass)
     }
 }

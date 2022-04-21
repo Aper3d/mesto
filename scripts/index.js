@@ -55,7 +55,7 @@ function closePopup(popup) {
 
 function editProfile(event) {
     event.preventDefault()
-    popupEditValidator.resetError(popupEditProfile)
+    popupEditValidator.resetError()
     userNameInput.value = userName.textContent
     userDescriptionInput.value = userDescription.textContent
     openPopup(popupEditProfile)
@@ -63,7 +63,7 @@ function editProfile(event) {
 
 function addCard(event) {
     event.preventDefault()
-    popupAddValidator.resetError(popupAddImg)
+    popupAddValidator.resetError()
     openPopup(popupAddImg)
 }
 
