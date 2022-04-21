@@ -31,13 +31,13 @@ popupAddValidator.enableValidation()
 
 function renderNewCard(data) {
     const newCard = new Card({ link: data.link, name: data.name }, templateCard, openView)
-    const cardElement = newCard.createCard()
-    elements.prepend(cardElement)
+    const card = newCard.createCard()
+    return card
 }
 
 function addNewCard(event) {
     event.preventDefault();
-    renderNewCard({ link: placeLink.value, name: placeName.value })
+    elements.prepend(renderNewCard({ link: placeLink.value, name: placeName.value }))
     closePopup(popupAddImg)
 }
 
@@ -52,8 +52,6 @@ function closePopup(popup) {
     popup.removeEventListener('mousedown', mousedownClosePopup)
     document.removeEventListener('keydown', keydownClosePopup)
 }
-
-
 
 function editProfile(event) {
     event.preventDefault()
@@ -106,5 +104,5 @@ profileEditSubmit.addEventListener('submit', submitProfile)
 imgAddSubmit.addEventListener('submit', addNewCard)
 
 cards.forEach((item) => {
-    renderNewCard({ link: item.link, name: item.name })
+    elements.prepend(renderNewCard({ link: item.link, name: item.name }))
 })
