@@ -1,26 +1,24 @@
-const popupAddImg = document.querySelector('#add') //попап добавления карточки  
-const popupEditProfile = document.querySelector('#edit') //попап редактирования профиля
-const popupFullView = document.querySelector('#view') //попап просмотра изображения
+const popupAddImg = '#add' //попап добавления карточки  
+const popupEditProfile = '#edit' //попап редактирования профиля
+const popupFullView = '#view' //попап просмотра изображения
 
 const imgAddBtn = document.querySelector('.profile__add-button') //кнопка добавления карточки
 const profileEditBtn = document.querySelector('.profile__edit-button') //кнопка редактирования профиля
 
-const profileEditSubmit = popupEditProfile.querySelector('#edit-form') //форма редактирования профиля
-const imgAddSubmit = popupAddImg.querySelector('#add-form') //форма добавления карточки
+const profileEditSubmit = '#edit-form' //форма редактирования профиля
+const imgAddSubmit = '#add-form' //форма добавления карточки
 
-const elements = document.querySelector('.elements__grid') //контейнер с карточками
+const elements = '.elements__grid' //контейнер с карточками
 const templateCard = '#element' //селектор темплейта карточек
 
-const placeName = popupAddImg.querySelector('#place-name') //инпут названия карточки
-const placeLink = popupAddImg.querySelector('#place-link') //инпут ссылки карточки
+const userNameInput = document.querySelector('#user-name') //инпут имени профиля 
+const userDescriptionInput = document.querySelector('#user-description') //инпут описания профиля
 
-const userNameInput = popupEditProfile.querySelector('#user-name') //инпут имени профиля 
-const userDescriptionInput = popupEditProfile.querySelector('#user-description') //инпут описания профиля
+const userName = '.profile__name' //имя профиля
+const userDescription = '.profile__description' //описания профиля
 
-const userName = document.querySelector('.profile__name') //имя профиля
-const userDescription = document.querySelector('.profile__description') //описания профиля
-const popupImg = popupFullView.querySelector('.popup__image') //попап просмотра карточки изображение
-const popupCaption = popupFullView.querySelector('.popup__caption') //попап просмотра карточки описание
+//const popupImg = '.popup__image' //попап просмотра карточки изображение
+//const popupCaption = '.popup__caption' //попап просмотра карточки описание
 
 const config = {
     formSelector: ".popup__forms",
@@ -68,14 +66,10 @@ export {
     imgAddSubmit,
     elements,
     templateCard,
-    placeName,
-    placeLink,
     userNameInput,
     userDescriptionInput,
     userName,
     userDescription,
-    popupImg,
-    popupCaption,
     config,
     cards
 };

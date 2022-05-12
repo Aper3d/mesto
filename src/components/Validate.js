@@ -7,7 +7,7 @@ export default class FormValidator {
         this._inputErrorClass = config.inputErrorClass
         this._errorClass = config.errorClass
 
-        this._formElement = formElement
+        this._formElement = document.querySelector(formElement)
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector))
         this._submitButton = this._formElement.querySelector(this._submitButtonSelector)
     }
@@ -64,7 +64,6 @@ export default class FormValidator {
         this._setEventListeners()
     }
     resetError() {
-        this._formElement.reset()
         const error = Array.from(this._formElement.querySelectorAll(this._inputSelector))
         error.forEach((inputElement) => {
             this._hideInputError(inputElement)
