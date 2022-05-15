@@ -1,6 +1,6 @@
 import './index.css'
 
-import FormValidator from '../components/Validate.js'
+import FormValidator from '../components/FormValidator.js'
 import Card from '../components/Card.js'
 import Section from '../components/Section.js'
 import PopupWithImage from '../components/PopupWithImage.js'
@@ -25,22 +25,21 @@ import {
     cards
 } from '../utils/constants.js'
 
-const userInfo = new UserInfo({name: userName, info: userDescription})
+const userInfo = new UserInfo({userNameSelector: userName, userInfoSelector: userDescription})
 
 const createCard = item => {
     const newCard = new Card({
         data: item,
-        handleCardClick: () => popupWithImage.openPopup(item)
+        handleCardClick: () => popupWithImage.open(item)
         }, templateCard)
-    return newCard
+    return newCard.createCard()
 }
 
 const newSection = new Section({ 
     items: cards, 
     renderer: item => {
         const card = createCard(item)
-        const newCard = card.createCard()
-        newSection.addItem(newCard)
+        newSection.addItem(card)
     }}, 
     elements
 )
@@ -48,15 +47,14 @@ newSection.render()
 
 const popupWithAddForm = new PopupWithForm(popupAddImg, inputValues => {
     const card = createCard(inputValues)
-    const newCard = card.createCard()
-    newSection.addItem(newCard)
-    popupWithAddForm.closePopup()
+    newSection.addItem(card)
+    popupWithAddForm.close()
 })
 popupWithAddForm.setEventListeners()
 
 const popupWithEditForm = new PopupWithForm(popupEditProfile, inputValues => {
     userInfo.setUserInfo(inputValues)
-    popupWithEditForm.closePopup()
+    popupWithEditForm.close()
 })
 popupWithEditForm.setEventListeners()
 
@@ -71,12 +69,12 @@ popupAddValidator.enableValidation()
 
 imgAddBtn.addEventListener('click', () => {
     popupAddValidator.resetError()
-    popupWithAddForm.openPopup()
+    popupWithAddForm.open()
 })
 profileEditBtn.addEventListener('click', () => {
     const userData = userInfo.getUserInfo()
     userNameInput.value = userData.name
     userDescriptionInput.value = userData.info
     popupEditValidator.resetError()
-    popupWithEditForm.openPopup()
+    popupWithEditForm.open()
 })

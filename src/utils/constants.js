@@ -5,8 +5,8 @@ const popupFullView = '#view' //попап просмотра изображен
 const imgAddBtn = document.querySelector('.profile__add-button') //кнопка добавления карточки
 const profileEditBtn = document.querySelector('.profile__edit-button') //кнопка редактирования профиля
 
-const profileEditSubmit = '#edit-form' //форма редактирования профиля
-const imgAddSubmit = '#add-form' //форма добавления карточки
+const profileEditSubmit = document.querySelector('#edit-form') //форма редактирования профиля
+const imgAddSubmit = document.querySelector('#add-form') //форма добавления карточки
 
 const elements = '.elements__grid' //контейнер с карточками
 const templateCard = '#element' //селектор темплейта карточек
@@ -16,9 +16,6 @@ const userDescriptionInput = document.querySelector('#user-description') //ин�
 
 const userName = '.profile__name' //имя профиля
 const userDescription = '.profile__description' //описания профиля
-
-//const popupImg = '.popup__image' //попап просмотра карточки изображение
-//const popupCaption = '.popup__caption' //попап просмотра карточки описание
 
 const config = {
     formSelector: ".popup__forms",
