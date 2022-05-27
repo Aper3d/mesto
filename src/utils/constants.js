@@ -28,7 +28,8 @@ const config = {
     submitButtonSelector: ".popup__submit-button",
     inactiveButtonClass: "popup__submit-button_inactiv",
     inputErrorClass: ".popup__error",
-    errorClass: "popup__error_visible"
+    errorClass: "popup__error_visible",
+    inputInvalidClass: "popup__input_invalid"
 } //селекторы для валидации
 
 export {

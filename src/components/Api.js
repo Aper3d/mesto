@@ -15,7 +15,7 @@ export default class Api {
     }
 
     getUserInfo() {
-        return fetch(this._url + '/users/me', {
+        return fetch(`${this._url}/users/me`, {
             method: 'GET',
             headers: this._headers
         })
@@ -23,7 +23,7 @@ export default class Api {
     }
 
     getCards() {
-        return fetch(this._url + '/cards', {
+        return fetch(`${this._url}/cards`, {
             method: 'GET',
             headers: this._headers
         })
@@ -31,7 +31,7 @@ export default class Api {
     }
 
     handleUserInfo(userData) {
-        return fetch(this._url + '/users/me', {
+        return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
@@ -42,7 +42,7 @@ export default class Api {
             .then(this._checkRes)
     }
     handleUserAvatar(data) {
-        return fetch(this._url + `/users/me/avatar`, {
+        return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
@@ -53,7 +53,7 @@ export default class Api {
     }
 
     addCard(data) {
-        return fetch(this._url + '/cards', {
+        return fetch(`${this._url}/cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
@@ -65,7 +65,7 @@ export default class Api {
     }
 
     like(id) {
-        return fetch(this._url + `/cards/likes/${id}`, {
+        return fetch(`${this._url}/cards/likes/${id}`, {
             method: 'PUT',
             headers: this._headers
         })
@@ -73,7 +73,7 @@ export default class Api {
     }
 
     dislike(id) {
-        return fetch(this._url + `/cards/likes/${id}`, {
+        return fetch(`${this._url}/cards/likes/${id}`, {
             method: 'DELETE',
             headers: this._headers
         })
@@ -81,7 +81,7 @@ export default class Api {
     }
 
     delete(id) {
-        return fetch(this._url + `/cards/${id}`, {
+        return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
             headers: this._headers
         })

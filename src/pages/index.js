@@ -36,7 +36,7 @@ const api = new Api({
     authorization: '934e43d4-85e6-4765-9a22-cf738085b2b0'
 })
 
-let userId 
+let userId
 
 api.getAll()
     .then(([cards, userData]) => {
@@ -52,18 +52,37 @@ const createCard = (data) => {
     const newCard = new Card({
         data: data,
         handleDeliteCard: () => {
-            popupWithConfirm.setSubmitAction( () => {
-            popupWithConfirm.renderLoading(true)
-            api.delete(data._id)
-                .then( () => {
-                  newCard.removeCard()
-                  popupWithConfirm.close()
-                })
-                .catch((err) => console.log(err))
-                .finally( () => popupWithConfirm.renderLoading(false))
+            popupWithConfirm.setSubmitAction(() => {
+                popupWithConfirm.renderLoading(true)
+                api.delete(data._id)
+                    .then(() => {
+                        newCard.removeCard()
+                        popupWithConfirm.close()
+                    })
+                    .catch((err) => console.log(err))
+                    .finally(() => popupWithConfirm.renderLoading(false))
             })
-            popupWithConfirm.open()},
-        handleLikeCard: () => newCard.handleLikeCard(),
+            popupWithConfirm.open()
+        },
+        handleLikeCard: () => {
+            if (!(newCard.likeButton.classList.contains('element__like-button_active'))) {
+                api.like(data._id)
+                    .then((data) => {
+                        newCard.likeCard(data.likes)
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+            } else {
+                api.dislike(data._id)
+                    .then((data) => {
+                        newCard.dislikeCard(data.likes)
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    })
+            }
+        },
         handleViewCard: () => popupWithImage.open(data)
     }, templateCardSelector, api, userId)
     return newCard.createCard()
@@ -91,15 +110,15 @@ const popupWithEditAvatarForm = new PopupWithForm(popupEditAvatarSelector, input
 const popupWithAddImgForm = new PopupWithForm(popupAddImgSelector, inputValues => {
     popupWithAddImgForm.renderLoading(true)
     api.addCard(inputValues)
-      .then((data) => {
-        const card = createCard(data)
-        newSection.addItem(card)
-        popupImgAddValidator.resetError()
-        popupWithAddImgForm.close()
-      })
-      .catch((err) => console.log(err))
-      .finally( () => popupWithAddImgForm.renderLoading(false))
-}) //добавление изображения
+        .then((data) => {
+            const card = createCard(data)
+            newSection.addItem(card)
+            popupImgAddValidator.resetError()
+            popupWithAddImgForm.close()
+        })
+        .catch((err) => console.log(err))
+        .finally(() => popupWithAddImgForm.renderLoading(false))
+}) //добавление карточки
 const popupWithEditProfileForm = new PopupWithForm(popupEditProfileSelector, inputValues => {
     popupWithEditProfileForm.renderLoading(true)
     api.handleUserInfo(inputValues)
@@ -130,19 +149,21 @@ popupProfileEditValidator.enableValidation()
 popupImgAddValidator.enableValidation()
 popupAvatarEditValidator.enableValidation()
 
-imgAddBtn.addEventListener('click', () => {
-    popupImgAddValidator.resetError()
-    popupWithAddImgForm.open()
-})
-profileEditBtn.addEventListener('click', () => {
+const openProfileEdit = () => {
     const userData = userInfo.getUserInfo()
     userNameInput.value = userData.name
     userDescriptionInput.value = userData.info
     popupProfileEditValidator.resetError()
     popupWithEditProfileForm.open()
-})
+} //открытие формы редактирования профиля
+
+imgAddBtn.addEventListener('click', () => {
+    popupImgAddValidator.resetError()
+    popupWithAddImgForm.open()
+}) //слушатель на кнопку добавления карточки
+profileEditBtn.addEventListener('click', openProfileEdit) //слушатель на кнопку редактирования профиля
 avatarEditBtn.addEventListener('click', () => {
     popupAvatarEditValidator.resetError()
     popupWithEditAvatarForm.open()
-})
+}) //слушатель на кнопку редактирования аватара
 

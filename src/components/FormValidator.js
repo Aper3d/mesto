@@ -6,6 +6,7 @@ export default class FormValidator {
         this._inactiveButtonClass = config.inactiveButtonClass
         this._inputErrorClass = config.inputErrorClass
         this._errorClass = config.errorClass
+        this._inputInvalidClass = config.inputInvalidClass
 
         this._formElement = formElement
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector))
@@ -13,14 +14,14 @@ export default class FormValidator {
     }
 
     _showInputError(inputElement) {
-        inputElement.classList.add('popup__input_invalid')
+        inputElement.classList.add(this._inputInvalidClass)
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
         errorElement.textContent = inputElement.validationMessage
         errorElement.classList.add(this._errorClass)
     };
 
     _hideInputError(inputElement) {
-        inputElement.classList.remove('popup__input_invalid')
+        inputElement.classList.remove(this._inputInvalidClass)
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`)
         errorElement.textContent = " "
         errorElement.classList.remove(this._errorClass)
